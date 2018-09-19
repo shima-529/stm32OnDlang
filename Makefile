@@ -17,8 +17,6 @@ all: output.elf
 output.elf: $(OBJS)
 	$(CC) $(CFLAGS) -Wl,-T,LinkerScript.ld,-Map=output.map,--gc-sections -o $@ $^
 
-%.o: src/%.c
-	$(CC) $(CFLAGS) -c -o $@ $^
 %.o: src/%.d
 	$(DC) $(DFLAGS) -c -of=$@ $(DC_MODULE) $^
 
